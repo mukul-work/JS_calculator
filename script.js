@@ -28,7 +28,7 @@ function manageOperators(event){
 
     num1 = display.textContent;
     currOp = event.target.textContent;
-    // resetDisplay = true;
+    resetDisplay = true;
 }
 
 function evaluate(){
@@ -40,7 +40,7 @@ function evaluate(){
 
     updateDisplay(result);
     currOp = null;
-    // resetDisplay=true;
+    resetDisplay=true;
 
 }
 
