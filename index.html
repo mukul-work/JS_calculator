@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
@@ -25,13 +26,15 @@
             <button class="operator">-</button>
 
             <button class="digit">0</button>
-            <button class="digit">.</button>
+            <button id="decimal">.</button>
             <button id="equals">=</button>
             <button class="operator">+</button>
 
             <button id="clear">Clear</button>
         </div>
     </main>
+    <script src="https://unpkg.com/expr-eval/dist/bundle.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
