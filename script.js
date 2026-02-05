@@ -58,6 +58,48 @@ function clearCalc(){
     updateDisplay("0");
 }
 
+function checkDigit(key) {
+  return key >= "0" && key <= "9";
+}
+
+function checkOperator(key) {
+  return ["+", "-", "*", "/"].includes(key);
+}
+
+
+function manageKeys(event){
+    const key = event.key;
+    if(checkDigit(key)){
+        if(resetDisplay){
+        display.textContent = "";
+        }
+        expression += key
+        display.textContent += key;
+        isOperator = false;
+        resetDisplay = false;
+    }
+    else if(checkOperator(key)){
+        if(isOperator) return;
+        expression += key
+        display.textContent += key;
+        isOperator = true;
+        isDecimal = false;
+    }
+    else if(key === "Enter" || key === "="){
+        evaluate();
+    }
+    else if(key === "."){
+        if(isDecimal) return;
+        expression += key;
+        display.textContent += key;
+        isDecimal = true;
+    }
+    else if(key === "Escape"){
+        clearCalc();
+    }
+
+}
+
 digits.forEach(btn => {
     btn.addEventListener("click", manageDigits);
 })
@@ -65,6 +107,8 @@ digits.forEach(btn => {
 operatorBtn.forEach(btn => {
     btn.addEventListener("click", manageOperators);
 })
+
+document.addEventListener("keydown", manageKeys);
 
 decimal.addEventListener("click", manageDecimal);
 
